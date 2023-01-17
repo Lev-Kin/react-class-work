@@ -11,5 +11,5 @@ export const useCounter = (amount = 1) => {
     setCounter(counter === 0 ? counter : counter - amount);
   };
 
-  return {counter, inc, dec};
+  return { counter, inc, dec };
 };

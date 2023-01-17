@@ -1,0 +1,38 @@
+.wrapper {
+    border: 1px solid gray;
+    box-shadow: 6px 6px 7px rgba(0,0,0,0.3);
+    padding: 10px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 200px;
+}
+
+.header {
+    font-size: 18px;
+    color:#2d2d2d;
+}
+
+.label {
+    font-size: 14px;
+    color: #3f3f3f;
+}
+
+.verify {
+    width: 20px;
+}
+
+.verifyButton {
+    border-radius: 15px;
+    border: 1px solid gray;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.verifyButton:hover {
+    background-color: wheat;
+}
+
+.avatar {
+    max-width: 150px;
+}
