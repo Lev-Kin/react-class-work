@@ -1,9 +1,11 @@
-import React from 'react';
-import { UserCard } from '../user-card';
-import styles from './index.module.css';
+import React from "react";
+import { UserCard } from "../user-card";
+import styles from "./index.module.css";
 
-export const UserList = ({users}) => (
-        <div className={styles.wrapper}>
-            { users.map((props) => <UserCard {...props} />) }
-        </div>
-    );
+export const UserList = ({ users, verifyHandler }) => (
+  <div className={styles.wrapper}>
+    {users.map((props) => (
+      <UserCard {...props} verifyHandler={verifyHandler} key={props.id}/>
+    ))}
+  </div>
+);
