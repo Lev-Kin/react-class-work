@@ -4,8 +4,10 @@ import styles from "./index.module.css";
 
 export const UserList = ({ users, verifyHandler }) => (
   <div className={styles.wrapper}>
-    {users.map((props) => (
-      <UserCard {...props} verifyHandler={verifyHandler} key={props.id}/>
-    ))}
+    {users.map((props) => {
+      return (
+        <UserCard {...props} verifyHandler={verifyHandler} key={props.id} />
+      );
+    })}
   </div>
 );

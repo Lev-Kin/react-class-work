@@ -5,7 +5,7 @@ import styles from "./index.module.css";
 export const UserCard = React.memo(
   ({ avatar, first_name, last_name, verified, verifyHandler, id }) => {
     console.log("RENDER", id);
-    (
+    return (
       <div className={styles.wrapper}>
         <img src={avatar} alt="avatar" className={styles.avatar} />
         <h3 className={styles.header}>{last_name}</h3>

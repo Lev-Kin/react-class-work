@@ -10,17 +10,19 @@ export const App = () => {
   const onInputChange = ({ target: { value } }) => setInputValue(value);
   // useEffect еще чтото
 
-  const verifyHandler = useCallback(
-    (userId) => {
-      setUsers(
-        users.map(({ verifind, ...user }) => ({
+  const rawVerifyHandler = (userId) => {
+    setUsers(
+      (
+        oldUsers
+      ) =>
+        oldUsers.map(({ verified, ...user }) => ({
           ...user,
-          verified: user.id === userId ? !verifind : verifind,
+          verified: user.id === userId ? !verified : verified,
         }))
-      );
-    },
-    [setUsers, users]
-  );
+    );
+  };
+
+  const verifyHandler = useCallback(rawVerifyHandler, [setUsers]);
 
   useEffect(() => {
     fetch("https://reqres.in/api/users?page=2")
@@ -28,27 +30,24 @@ export const App = () => {
       .then(({ data }) =>
         setUsers(data.map((user) => ({ ...user, verified: false })))
       );
-  }, []);
+  }, [counter]);
 
-  const filteredUsers = useMemo(
-    () =>
-      users.filter(
-        ({ last_name, first_name }) =>
-          last_name.toLowerCase().includes(inputValue.toLowerCase()) ||
-          first_name.toLowerCase().includes(inputValue.toLowerCase())
-      ),
-    [inputValue, users]
-  );
+  const filteredUsers = useMemo(() => {
+    return users.filter(
+      ({ last_name, first_name }) =>
+        last_name.toLowerCase().includes(inputValue.toLowerCase()) ||
+        first_name.toLowerCase().includes(inputValue.toLowerCase())
+    );
+  }, [inputValue, users]);
 
-  console.log(users); //=========
 
   return (
     <div>
       <button
         style={{ marginLeft: "200px" }}
-        onClick={() => setCounter(counter + 1)}
+        onClick={() => setCounter({})}
       >
-        {counter}
+        FETCH DATA
       </button>
       <UserInput onInputChange={onInputChange} value={inputValue} />
       <UserList users={filteredUsers} verifyHandler={verifyHandler} />
