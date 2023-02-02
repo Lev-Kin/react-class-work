@@ -9,7 +9,7 @@ export const App = () => {
   let [counter, setCounter] = useState(() => hardCalculation());
   // let [obj, setObj] = useState({ a: 2, b: 100 });
 
-  console.log("RENDER");
+
 
   const onClickHandler = () => {
     setCounter(counter - 1);

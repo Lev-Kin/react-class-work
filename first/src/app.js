@@ -1,56 +1,41 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react";
-import { UserInput } from "./components/user-input";
-import { UserList } from "./components/user-list";
+import React, { useRef, useEffect, useState } from "react";
 
 export const App = () => {
-  const [users, setUsers] = useState([]);
   const [counter, setCounter] = useState(0);
-  const [inputValue, setInputValue] = useState("");
+  const [inputVal, setInputVal] = useState("");
+//   const inputRef = useRef();
+const rerenderCounter = useRef(0);
+const firstRender = useRef(false);
 
-  const onInputChange = ({ target: { value } }) => setInputValue(value);
-  // useEffect еще чтото
-
-  const rawVerifyHandler = (userId) => {
-    setUsers(
-      (
-        oldUsers
-      ) =>
-        oldUsers.map(({ verified, ...user }) => ({
-          ...user,
-          verified: user.id === userId ? !verified : verified,
-        }))
-    );
-  };
-
-  const verifyHandler = useCallback(rawVerifyHandler, [setUsers]);
 
   useEffect(() => {
-    fetch("https://reqres.in/api/users?page=2")
-      .then((data) => data.json())
-      .then(({ data }) =>
-        setUsers(data.map((user) => ({ ...user, verified: false })))
-      );
-  }, [counter]);
+    if (firstRender.current) {
+        console.log("UPDATE");
+        rerenderCounter.current++;
+        console.log(rerenderCounter.current);
+    } else {
+        console.log('MOUNT');
+        firstRender.current = true;
+    }    
+  });
 
-  const filteredUsers = useMemo(() => {
-    return users.filter(
-      ({ last_name, first_name }) =>
-        last_name.toLowerCase().includes(inputValue.toLowerCase()) ||
-        first_name.toLowerCase().includes(inputValue.toLowerCase())
-    );
-  }, [inputValue, users]);
-
+  // useEffect(() => {
+  //     if (inputRef.current) {
+  //         console.log('FOCUS!');
+  //         inputRef.current.value;
+  //     }
+  // });
 
   return (
-    <div>
-      <button
-        style={{ marginLeft: "200px" }}
-        onClick={() => setCounter({})}
-      >
-        FETCH DATA
-      </button>
-      <UserInput onInputChange={onInputChange} value={inputValue} />
-      <UserList users={filteredUsers} verifyHandler={verifyHandler} />
-    </div>
+    <>
+      <input
+        value={inputVal}
+        type="text"
+        onChange={({ target: { value } }) => setInputVal(value)}
+      />
+      <br />
+      <h1>RENDER COUNTER: {rerenderCounter.current}</h1>
+      {/* <input type="number" ref={inputRef} /> */}
+    </>
   );
 };
