@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { App } from "./app";
 
-export const Outer = () => {
+export const Outer = React.memo(() => {
   const [isAppShown, setIsAppShown] = useState(true);
 
   return (
@@ -10,4 +10,7 @@ export const Outer = () => {
       {isAppShown && <App />}
     </>
   );
-};
+}, (prevProps, nextProps) => {
+  if () {}
+  return 
+})
