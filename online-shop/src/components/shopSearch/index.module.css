@@ -1,0 +1,48 @@
+.searchWrapper {
+    display: flex;
+    border: 1px solid rgba(0,0,0, 0.06);
+    border-radius: 5px;
+    max-width: 400px;
+    min-width: 300px;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    margin: 10px auto;
+    box-shadow: 5px 6px 8px 5px rgba(0,0,0,0.08);
+    background-color: #fff;
+}
+
+.searchInput {
+    border-radius: 5px;
+    display: block;
+    margin-right: 10%;
+    border: 1px solid rgba(0,0,0,0.2);
+    padding: 8px;
+}
+
+.searchInput:focus {
+    outline: 1px solid gray;
+}
+
+.filterButton {
+    border-radius: 5px;
+    padding: 6px;
+    max-width: 30px;
+    cursor: pointer;
+    background: none;
+    border: 1px solid rgba(0,0,0,0.08);
+    outline: none;
+    transition: all 0.1s ease-in-out;    
+}
+
+.filterButton > img {
+    width: 100%;
+}
+
+.filterButton:hover {
+    border: 1px solid gray;
+}
+
+.filterButton:active {
+    box-shadow: inset 2px 2px 1px rgba(0,0,0,0.2);    
+}
