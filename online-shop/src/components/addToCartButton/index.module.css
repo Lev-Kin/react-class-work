@@ -1,0 +1,30 @@
+.addToCartButton {
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  outline: none;
+  transition: all 0.1s ease-in-out;
+  background-color: #fff;
+}
+
+.s {
+  max-width: 30px;
+  padding: 6px;
+}
+
+.m {
+  max-width: 60px;
+  padding: 12px;
+}
+
+.addToCartButton > img {
+  width: 100%;
+}
+
+.addToCartButton:hover {
+  border: 1px solid gray;
+}
+
+.addToCartButton:active {
+  box-shadow: inset 2px 2px 1px rgba(0, 0, 0, 0.2);
+}

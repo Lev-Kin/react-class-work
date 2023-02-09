@@ -5,7 +5,7 @@ const data = {
         "name": "Холодильник",
         "category": "Техника",
         "description": "Холодильник - описание",
-        "img": "https://img.5element.by/import/images/ut/goods/good_7329f5e5-5e4a-11ec-bb94-0050560120e8/rb37a52n0b1-wt-holodilnik-samsung-1_600.jpg",
+        "img": "https://на-скидке.бел/uploads/lotimages/633af9af47629.jpg",
         "price": 375
       },
       {
@@ -13,7 +13,7 @@ const data = {
         "name": "Телевизор",
         "category": "Техника",
         "description": "Телевизор - описание",
-        "img": "https://www.maunfeld.by/upload/slam.image/iblock/d5a/4bm1dpj09otkq87wnmuv0xdl48hvxdlj/1000_1000_1/Maunfeld-MLT32HSX02_01_-90.png",
+        "img": "https://img.5element.by/import/images/ut/goods/good_95be4caf-ba5b-11ec-bb95-0050560120e8/43le7052d-televizor-horizont-2_600.jpg",
         "price": 520
       },
       {
@@ -21,7 +21,7 @@ const data = {
         "name": "Микроволновая печь",
         "category": "Техника",
         "description": "Микроволновая печь - описание",
-        "img": "https://images.deal.by/316599248_mikrovolnovaya-pech-bbk.jpg",
+        "img": "https://img.5element.by/import/images/ut/goods/good_9aa9a192-4381-11eb-bb92-0050560120e8/cms20w-mikrovolnovaya-pech-candy-1_600.jpg",
         "price": 130
       },
       {
@@ -29,7 +29,7 @@ const data = {
         "name": "Велосипед",
         "category": "Спорт",
         "description": "Велосипед - описание",
-        "img": "http://service.volkswagen.ru/eshop/uploads//items/41a889f37ea187065638053d0fb3d316e28c6261.jpg",
+        "img": "https://thumb.tildacdn.com/tild3663-3665-4565-a633-666437346366/-/resize/480x/-/format/webp/123_1.jpg",
         "price": 850
       },
       {
@@ -49,13 +49,12 @@ const data = {
         "price": 560
       }
     ]
-  };
+};
 
-
-  export const fetchProducts = (time=1000) => { 
-        return new Promise((res) => {
-            setTimeout(() => {
-                res(data);
-            },time);
-        });
-  };
+export const fetchProducts = (time = 1000) => {
+    return new Promise((res) => {
+        setTimeout(() => {
+            res(data);
+        }, time);
+    });
+};

@@ -1,8 +1,8 @@
 .wrapper {
-  width: 200px;
-  margin: 70px auto;
+    width: 150px;
+    margin: 70px auto;
 }
 
 .wrapper > img {
-  width: 100%;
+    width: 100%;
 }

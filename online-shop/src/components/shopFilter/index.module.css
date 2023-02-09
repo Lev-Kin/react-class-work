@@ -1,0 +1,22 @@
+.filterButton {
+  border-radius: 5px;
+  padding: 6px;
+  max-width: 30px;
+  cursor: pointer;
+  background: none;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  outline: none;
+  transition: all 0.1s ease-in-out;
+}
+
+.filterButton > img {
+  width: 100%;
+}
+
+.filterButton:hover {
+  border: 1px solid gray;
+}
+
+.filterButton:active {
+  box-shadow: inset 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
