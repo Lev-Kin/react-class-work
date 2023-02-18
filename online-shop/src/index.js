@@ -9,21 +9,24 @@ import { Contacts } from "./pages/contacts";
 import { NotFound } from "./pages/notFound";
 import { MainMenu } from "./components/mainMenu";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "./redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
- 
-  <BrowserRouter>
-   <MainMenu />
-    <Routes>
-    
-      <Route path="/" element={<Shop />} />
-      <Route path="/contacts" element={<Contacts />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/product/:productId" element={<Product />} />
-      <Route path="/product" element={<Navigate to="/" />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<MainMenu />}>
+          <Route index element={<Shop />} />
+          <Route path='contacts' element={<Contacts />} />
+          <Route path="cart" element={<Cart />}  />
+          <Route path="product/:productId" element={<Product />} />
+          <Route path="product" element={<Navigate to="/" />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
+  </Provider>
 );
