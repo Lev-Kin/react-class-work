@@ -28,8 +28,8 @@
 }
 
 .route {
-    margin-right: 10px;
     text-decoration: none;
+    margin-right: 10px;
     cursor: pointer;
     font-size: 14px;
     background: none;

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { selectIsAuth } from '../../redux/slices/userAuth';
 
 
-export const PrivateRoute = ({children}) => {
+export const PrivateRoute = () => {
     const isAuth = useSelector(selectIsAuth);
 
     if (!isAuth) {

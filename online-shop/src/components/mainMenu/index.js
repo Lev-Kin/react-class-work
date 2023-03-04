@@ -1,54 +1,42 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { AddToCartButton } from "../addToCartButton";
-import { NavLink, useNavigate } from "react-router-dom";
-import styles from "./index.module.css";
-import {
-  selectIsAuth,
-  selectName,
-  login,
-  logout,
-} from "../../redux/slices/userAuth";
+import {AddToCartButton} from '../addToCartButton';
+import {NavLink, useNavigate} from 'react-router-dom';
+import styles from './index.module.css';
 import { useDispatch, useSelector } from "react-redux";
+import { selectIsAuth, selectName, login, logout } from "../../redux/slices/userAuth";
+
 
 export const MainMenu = () => {
   const navigate = useNavigate();
-  const activeClassName = ({ isActive }) =>
-    isActive ? styles.activeRoute : styles.route;
-  const dispath = useDispatch();
 
+  const activeClassName = ({isActive}) => isActive ? styles.activeRoute: styles.route;
   const isAuth = useSelector(selectIsAuth);
   const userName = useSelector(selectName);
-  const navigateToCart = () => navigate("/cart");
 
-  function handLogin () {
+  const dispatch = useDispatch();
+  const navigateToCart = () => navigate('/cart');
+  const handleLogin = () => {
     if(isAuth){
-      dispath(logout())
+        dispatch(logout());
     } else {
-      dispath(login())
+        dispatch(login());
     }
 }
 
-  console.log(isAuth);
+
+
   return (
     <>
       <nav className={styles.wrapper}>
-        {isAuth && (
-          <p className={styles.userName}>{isAuth ? userName : "Plz"}</p>
-        )}
-        {/* <NavLink  to='/login' className={activeClassName}>Login</NavLink> */}
-        <button className={styles.route} onClick={handLogin}>
-          {isAuth ? "Logout" : "Login"}
-        </button>
-        <NavLink to="/contacts" className={activeClassName}>
-          contacts
-        </NavLink>
-        <NavLink to="/" className={activeClassName}>
-          shop
-        </NavLink>
-        <AddToCartButton handleClick={navigateToCart} size="s" />
+         <p className={styles.userName}>{isAuth ? userName : 'Please log in'}</p>
+        {/* <NavLink  to='/login' className={activeClassName}>logout</NavLink> */}
+        <button className={styles.route} onClick={handleLogin}>{isAuth ? 'Logout' : 'Login'}</button>
+        <NavLink to='/contacts' className={activeClassName}>contacts</NavLink>
+        <NavLink to='/' className={activeClassName}>shop</NavLink>
+        <AddToCartButton handleClick={navigateToCart} size="s"/>
       </nav>
-      <Outlet />
+      <Outlet/>
     </>
   );
 };
