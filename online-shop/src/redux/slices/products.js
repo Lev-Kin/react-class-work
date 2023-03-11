@@ -1,5 +1,5 @@
-import {createSlice, createSelector, createAsyncThunk, bindActionCreators} from '@reduxjs/toolkit';
-import { fetchProducts } from '../../utils/fetchProducts';
+import {createSlice, createSelector} from '@reduxjs/toolkit';
+
 
 
 const startState = {
@@ -15,6 +15,7 @@ export const productsSlice = createSlice({
         setProducts: (state, {payload}) => {
             state.goods = payload;
             state.error = null;
+            state.isLoading = false;
         },
         setIsLoading: (state, {payload}) => {
             state.isLoading = payload;
@@ -22,16 +23,16 @@ export const productsSlice = createSlice({
         setError: (state, {payload}) => {
             state.error = payload;
             state.products = null;
+            state.isLoading = false;
         }
     }
 });
 
 
-
 export const productsReducer = productsSlice.reducer;
 
 export const {setProducts, setIsLoading, setError} = productsSlice.actions;
-console.log(productsSlice);
+
 export const selectProducts = ({products}) => products;
 
 export const selectGoods = createSelector(

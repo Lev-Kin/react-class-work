@@ -1,22 +1,19 @@
-import {createSlice, createSelector } from '@reduxjs/toolkit';
+import {createSlice, createSelector} from '@reduxjs/toolkit';
 
 
 const startState = {
-    name: '',
-    isAuth: true
+    user: false,
 };
-
 
 export const userAuthSlice = createSlice({
     name: 'userAuth',
     initialState: startState,
     reducers: {
-        login: (state) => {
-            state.name = "john";
-            state.isAuth = true;
+        setUser: (state, payload) => {
+           state.user = payload;
         },
         logout: (state) => {
-            state.name = 'Plis name'
+            state.name = 'Please log in';
             state.isAuth = false;
         }
     }
@@ -25,56 +22,16 @@ export const userAuthSlice = createSlice({
 
 export const userAuthReducer = userAuthSlice.reducer;
 
-export const {login, logout} = userAuthSlice.actions;
+export const {setUser, logout} = userAuthSlice.actions;
 
 export const selectUserAuth = ({userAuth}) => userAuth;
 
 export const selectIsAuth = createSelector(
     selectUserAuth,
-    ({isAuth}) => isAuth
+    ({user}) => Boolean(user)
 );
 
 export const selectName = createSelector(
     selectUserAuth,
-    ({name}) => name
+    ({user}) => user ? user.displayName : ''
 );
-
-
-
-
-// const action = {
-//     type: 'logout'
-// }
-
-// const initialState = {
-//     a:2,
-//     goods: [{},{}],
-//     isAuth: false
-// };
-
-// export const reducer = (state = initialState, action) => {
-//     switch (action.type) {
-//         case 'login':
-//             return poreshajSLoginom()
-//             // return {
-//             //     ...state,
-//             //     isAuth: true
-//             // };
-//         case 'logout': 
-//             return poreshajSLogoutom();
-//             // return {
-//             //     ...state,
-//             //     isAuth: false
-//             // }
-//         default:
-//             return state;
-//     }
-// }
-
-// function poreshajSLoginom() {
-//     ////
-// }
-
-// function poreshajSLogoutom() {
-//     ////
-// }
